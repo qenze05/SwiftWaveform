@@ -10,18 +10,18 @@ import SwiftUI
  */
 public struct WaveformViewSUI: UIViewRepresentable {
     
-    @Binding var frequencies: [Float]
-    @Binding var rms: Float
-    let settings: WFViewSettings
+    @Binding public var frequencies: [Float]
+    @Binding public var rms: Float
+    public let settings: WFViewSettings
     
     // MARK: - UIViewRepresentable
-    func makeUIView(context: Context) -> WaveformView {
+    public func makeUIView(context: Context) -> WaveformView {
         let view = WaveformView()
         view.configure(settings: settings)
         return view
     }
     
-    func updateUIView(_ uiView: WaveformView, context: Context) {
+    public func updateUIView(_ uiView: WaveformView, context: Context) {
 
         if !uiView.isSetUp && uiView.bounds.width != 0 {
             uiView.setupView()

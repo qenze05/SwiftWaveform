@@ -54,7 +54,7 @@ public class WaveformView: UIView {
         self.frequencyValues = [Float](repeating: 0, count: settings.barCount)
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         setupView()
     }

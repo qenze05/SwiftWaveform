@@ -9,11 +9,11 @@ import AVFoundation
     - bufferSize: size of buffer to use. 4096 recommended, lower to 2048 or 1024 if needed.
  */
 public class WFProcessorSettings {
-    var inputType: WFInputType
-    var processingType: WFProcessType
-    var bufferSize: Int
+    public var inputType: WFInputType
+    public var processingType: WFProcessType
+    public var bufferSize: Int
     
-    init(inputType: WFInputType, processingType: WFProcessType, bufferSize: Int = 4096) {
+    public init(inputType: WFInputType, processingType: WFProcessType, bufferSize: Int = 4096) {
         self.inputType = inputType
         self.processingType = processingType
         self.bufferSize = bufferSize
@@ -47,11 +47,11 @@ public enum WFInputType {
     - outputName: prefix for output file. Needed if outputURL is present.
  */
 public struct WFMicSettings {
-    let outputVolume: Float
-    let outputDirectoryURL: URL?
-    let outputName: String?
+    public let outputVolume: Float
+    public let outputDirectoryURL: URL?
+    public let outputName: String?
     
-    init(outputVolume: Float = 0.0, outputURL: URL? = nil, outputName: String? = nil) {
+    public init(outputVolume: Float = 0.0, outputURL: URL? = nil, outputName: String? = nil) {
         self.outputVolume = max(0, min(outputVolume, 1))
         self.outputDirectoryURL = outputURL
         self.outputName = outputName

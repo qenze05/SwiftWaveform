@@ -15,25 +15,26 @@ import UIKit
     - animation: animation of bars, see ``WFAnimationSettings``
  */
 public class WFViewSettings {
-    var frameTime: TimeInterval
-    var barCount: Int
-    var viewType: WFViewType
-    var modelType: WFModel
-    var colorSettings: WFColorSettings
-    var maxHeight: CGFloat
-    var mirrored: Bool
-    var drawSilence: Bool
-    var animation: WFAnimationSettings
+    public var frameTime: TimeInterval
+    public var barCount: Int
+    public var viewType: WFViewType
+    public var modelType: WFModel
+    public var colorSettings: WFColorSettings
+    public var maxHeight: CGFloat
+    public var mirrored: Bool
+    public var drawSilence: Bool
+    public var animation: WFAnimationSettings
     
-    init(frameTime: TimeInterval,
-         barCount: Int,
-         modelType: WFModel,
-         viewType: WFViewType,
-         colorSettings: WFColorSettings = WFColorSettings(),
-         maxHeight: CGFloat = 1,
-         mirrored: Bool = false,
-         drawSilence: Bool = false,
-         animation: WFAnimationSettings? = nil
+    public init(
+        frameTime: TimeInterval,
+        barCount: Int,
+        modelType: WFModel,
+        viewType: WFViewType,
+        colorSettings: WFColorSettings = WFColorSettings(),
+        maxHeight: CGFloat = 1,
+        mirrored: Bool = false,
+        drawSilence: Bool = false,
+        animation: WFAnimationSettings? = nil
     ) {
         self.frameTime = max(0, frameTime)
         self.barCount = max(2, barCount)
@@ -79,9 +80,9 @@ public enum WFViewType {
     - barSpacing: spacing between bars, can be 0
  */
 public struct WFBarViewSettings {
-    var twoSided: Bool
-    var roundCorners: Bool
-    var barSpacing: CGFloat
+    public var twoSided: Bool
+    public var roundCorners: Bool
+    public var barSpacing: CGFloat
     
     init(twoSided: Bool = false, roundCorners: Bool = false, barSpacing: CGFloat = 2) {
         self.twoSided = twoSided
@@ -98,11 +99,11 @@ public struct WFBarViewSettings {
     - circleFillColor: fill color for inner circle. Transperent if nil.
  */
 public struct WFCircleViewSettings {
-    var radius: CGFloat
-    var barWidth: CGFloat
-    var circleFillColor: UIColor?
+    public var radius: CGFloat
+    public var barWidth: CGFloat
+    public var circleFillColor: UIColor?
     
-    init(radius: CGFloat = 0.5, barWidth: CGFloat = 2, circleFillColor: UIColor? = nil) {
+    public init(radius: CGFloat = 0.5, barWidth: CGFloat = 2, circleFillColor: UIColor? = nil) {
         if radius < 0 || radius > 1 {
             self.radius = 0.5
         } else {
@@ -120,8 +121,8 @@ public struct WFCircleViewSettings {
     - timingFunction: timing function to apply.
  */
 public struct WFAnimationSettings {
-    var duration: TimeInterval
-    var timingFunction: CAMediaTimingFunction
+    public var duration: TimeInterval
+    public var timingFunction: CAMediaTimingFunction
 }
 
 /**
@@ -131,10 +132,10 @@ public struct WFAnimationSettings {
     - colorMode: fill color for bars, see ``WFColorMode``
  */
 public struct WFColorSettings {
-    let bgColor: UIColor
-    let colorMode: WFColorMode
+    public let bgColor: UIColor
+    public let colorMode: WFColorMode
 
-    init(bgColor: UIColor = .clear, colorMode: WFColorMode = .solidColor(.systemBlue)) {
+    public init(bgColor: UIColor = .clear, colorMode: WFColorMode = .solidColor(.systemBlue)) {
         self.bgColor = bgColor
         self.colorMode = colorMode
     }

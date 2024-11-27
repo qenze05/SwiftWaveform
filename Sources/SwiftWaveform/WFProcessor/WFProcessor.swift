@@ -60,7 +60,7 @@ public class WFProcessor {
      - Parameters:
         - settings: processor settings, see ``WFProcessorSettings``
     */
-    init(settings: WFProcessorSettings) {
+    public init(settings: WFProcessorSettings) {
         self.settings = settings
 
         self.engine = AVAudioEngine()
