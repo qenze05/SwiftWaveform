@@ -36,7 +36,7 @@ import AVFoundation
 public class WFProcessor {
     
     public private(set) var state: WFProcessorState = .paused
-
+    
     private var settings: WFProcessorSettings
     
     private var engine: AVAudioEngine
@@ -58,11 +58,11 @@ public class WFProcessor {
     /**
      Initializes new WFProcessor with provided settings
      - Parameters:
-        - settings: processor settings, see ``WFProcessorSettings``
-    */
+     - settings: processor settings, see ``WFProcessorSettings``
+     */
     public init(settings: WFProcessorSettings) {
         self.settings = settings
-
+        
         self.engine = AVAudioEngine()
         self.player = AVAudioPlayerNode()
         
@@ -75,7 +75,7 @@ public class WFProcessor {
         self.currentTime = 0
         self.audioLength = 0
         self.lastPlayedTime = 0
-                
+        
         setupInput()
     }
     
@@ -125,7 +125,7 @@ public class WFProcessor {
     /**
      Plays audio from provided time in seconds
      - Parameters:
-        - time: time in seconds to play from. Cannot be less than zero and more than audioLength.
+     - time: time in seconds to play from. Cannot be less than zero and more than audioLength.
      */
     public func seekTo(_ time: TimeInterval) {
         switch settings.inputType {
@@ -139,11 +139,11 @@ public class WFProcessor {
             else { return }
             
             player.stop()
-
+            
             currentTime = time
             lastPlayedTime = currentTime
             let newTime = AVAudioFramePosition(time * Double(frequency))
-
+            
             player.scheduleSegment(audioFile,
                                    startingFrame: newTime,
                                    frameCount: AVAudioFrameCount(audioFile.length - newTime),
@@ -208,7 +208,7 @@ public class WFProcessor {
     /**
      Setup new input for processor. It's safe to use player functions afterwards.
      - Parameters:
-        - inputType: new input, see ``WFInputType``
+     - inputType: new input, see ``WFInputType``
      */
     public func setupInput(_ inputType: WFInputType) {
         stopEngine()
@@ -220,7 +220,7 @@ public class WFProcessor {
     /**
      Setup new settings for processor. It's safe to use player functions afterwards.
      - Parameters:
-        - settings: new settings, see ``WFProcessorSettings``
+     - settings: new settings, see ``WFProcessorSettings``
      */
     public func setupSettings(_ settings: WFProcessorSettings) {
         stopEngine()
@@ -248,8 +248,14 @@ public class WFProcessor {
                 
                 // Grant access to mic
                 var granted = false
-                AVAudioApplication.requestRecordPermission { isGranted in
-                    granted = isGranted
+                if #available(iOS 17.0, *) {
+                    AVAudioApplication.requestRecordPermission { isGranted in
+                        granted = isGranted
+                    }
+                } else {
+                    session.requestRecordPermission { isGranted in
+                        granted = isGranted
+                    }
                 }
                 
                 if !granted {
