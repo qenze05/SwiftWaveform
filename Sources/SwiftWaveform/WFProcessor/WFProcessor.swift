@@ -33,7 +33,7 @@ import AVFoundation
  ## currentTime
  Progress of currently playing song in seconds. Doesn't update on mic input.
  */
-class WFProcessor {
+public class WFProcessor {
     
     public private(set) var state: WFProcessorState = .paused
 

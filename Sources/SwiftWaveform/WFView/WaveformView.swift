@@ -12,7 +12,7 @@ import UIKit
  - isSetUp - boolean value, true after successful call of setupView()
  - frequencyValues - float array, data used for creating waveform view
  */
-class WaveformView: UIView {
+public class WaveformView: UIView {
     
     public private(set) var isSetUp = false
     

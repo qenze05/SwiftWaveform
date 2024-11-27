@@ -8,7 +8,7 @@ import SwiftUI
     - rms: binding of rms data, float value
     - settings: waveform view settings, see ``WFViewSettings``
  */
-struct WaveformViewSUI: UIViewRepresentable {
+public struct WaveformViewSUI: UIViewRepresentable {
     
     @Binding var frequencies: [Float]
     @Binding var rms: Float
