@@ -84,7 +84,7 @@ public struct WFBarViewSettings {
     public var roundCorners: Bool
     public var barSpacing: CGFloat
     
-    init(twoSided: Bool = false, roundCorners: Bool = false, barSpacing: CGFloat = 2) {
+    public init(twoSided: Bool = false, roundCorners: Bool = false, barSpacing: CGFloat = 2) {
         self.twoSided = twoSided
         self.roundCorners = roundCorners
         self.barSpacing = max(0, barSpacing)
@@ -123,6 +123,11 @@ public struct WFCircleViewSettings {
 public struct WFAnimationSettings {
     public var duration: TimeInterval
     public var timingFunction: CAMediaTimingFunction
+    
+    public init(duration: TimeInterval, timingFunction: CAMediaTimingFunction) {
+        self.duration = max(0, duration)
+        self.timingFunction = timingFunction
+    }
 }
 
 /**
